@@ -27,13 +27,14 @@
 
 ## Getting Started
 
-1. Install and configure Genymotion (Android emulator)
-2. Install Expo CLI (npm i -g expo-cli), then use it (expo start --android) while your Android emulator is running.
+1. Install and configure Genymotion (Android emulator).
+2. Get the [API](https://github.com/brenobaptista/libretutors-api-nodejs) running (yarn dev) and change the baseURL in this project (/services/api.js) according to your network.
+3. Install Expo CLI (npm i -g expo-cli), then use it (expo start --android) while your Android emulator is running.
 
 ## Screenshots
 
 ![screenshot01](https://github.com/brenobaptista/libretutors-react-native/blob/master/src/assets/sc01.png)
-![screenshot02](https://github.com/brenobaptista/libretutors-react-native/blob/master/src/assets/sc01.png)
+![screenshot02](https://github.com/brenobaptista/libretutors-react-native/blob/master/src/assets/sc02.png)
 
 ## Support
 
