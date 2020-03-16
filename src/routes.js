@@ -1,9 +1,9 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-import Login from "./pages/Login";
-import Main from "./pages/Main";
-import Profile from "./pages/Profile";
+import Login from './pages/Login';
+import Main from './pages/Main';
+import Profile from './pages/Profile';
 
 const Routes = createAppContainer(
   createStackNavigator(
@@ -11,33 +11,33 @@ const Routes = createAppContainer(
       Login: {
         screen: Login,
         navigationOptions: {
-          title: "Login"
-        }
+          title: 'Login',
+        },
       },
       Main: {
         screen: Main,
         navigationOptions: {
-          title: "LibreTutor",
-          headerLeft: () => null
-        }
+          title: 'LibreTutors',
+          headerLeft: () => null,
+        },
       },
       Profile: {
         screen: Profile,
         navigationOptions: {
-          title: "Chat Profile"
-        }
-      }
+          title: 'Chat Profile',
+        },
+      },
     },
     {
       defaultNavigationOptions: {
-        headerTintColor: "#FFF",
+        headerTintColor: '#FFF',
         headerBackTitleVisible: false,
         headerStyle: {
-          backgroundColor: "#7D40E7"
-        }
-      }
-    }
-  )
+          backgroundColor: '#146D4F',
+        },
+      },
+    },
+  ),
 );
 
 export default Routes;

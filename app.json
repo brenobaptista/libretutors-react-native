@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "LibreTutor - Pupil App",
-    "slug": "libretutor-mobile-pupil",
+    "name": "LibreTutors",
+    "slug": "libretutors",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": ["ios", "android", "web"],

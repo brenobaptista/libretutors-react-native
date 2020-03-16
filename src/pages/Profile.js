@@ -1,8 +1,8 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default function Profile({ navigation }) {
-  const name = navigation.getParam("name");
+  const name = navigation.getParam('name');
 
   return (
     <View style={styles.container}>
@@ -14,6 +14,6 @@ export default function Profile({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });

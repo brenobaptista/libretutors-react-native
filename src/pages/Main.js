@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Image,
   View,
   Text,
   TextInput,
-  TouchableOpacity
-} from "react-native";
-import MapView, { Marker, Callout } from "react-native-maps";
+  TouchableOpacity,
+} from 'react-native';
+import MapView, { Marker, Callout } from 'react-native-maps';
 import {
   requestPermissionsAsync,
-  getCurrentPositionAsync
-} from "expo-location";
-import { MaterialIcons } from "@expo/vector-icons";
+  getCurrentPositionAsync,
+} from 'expo-location';
+import { MaterialIcons } from '@expo/vector-icons';
 
-import api from "../services/api";
+import api from '../services/api';
 
 export default function Main({ navigation }) {
   const [tutors, setTutors] = useState([]);
   const [currentRegion, setCurrentRegion] = useState(null);
-  const [subjects, setSubjects] = useState("");
+  const [subjects, setSubjects] = useState('');
 
   useEffect(() => {
     async function loadInitialPosition() {
@@ -27,7 +27,7 @@ export default function Main({ navigation }) {
 
       if (granted) {
         const { coords } = await getCurrentPositionAsync({
-          enableHighAccuracy: true
+          enableHighAccuracy: true,
         });
 
         const { latitude, longitude } = coords;
@@ -36,7 +36,7 @@ export default function Main({ navigation }) {
           latitude,
           longitude,
           latitudeDelta: 0.04,
-          longitudeDelta: 0.04
+          longitudeDelta: 0.04,
         });
       }
     }
@@ -47,12 +47,12 @@ export default function Main({ navigation }) {
   async function loadTutors() {
     const { latitude, longitude } = currentRegion;
 
-    const response = await api.get("/search", {
+    const response = await api.get('/search', {
       params: {
         latitude,
         longitude,
-        subjects
-      }
+        subjects,
+      },
     });
 
     setTutors(response.data.tutors);
@@ -73,26 +73,26 @@ export default function Main({ navigation }) {
         initialRegion={currentRegion}
         style={styles.map}
       >
-        {tutors.map(tutor => (
+        {tutors.map((tutor) => (
           <Marker
             key={tutor._id}
             coordinate={{
               latitude: tutor.location.coordinates[1],
-              longitude: tutor.location.coordinates[0]
+              longitude: tutor.location.coordinates[0],
             }}
           >
-            <Image style={styles.avatar} source={{ uri: tutor.avatar_url }} />
+            <Image style={styles.avatar} source={{ uri: tutor.avatarUrl }} />
 
             <Callout
               onPress={() => {
-                navigation.navigate("Profile", { name: tutor.name });
+                navigation.navigate('Profile', { name: tutor.name });
               }}
             >
               <View style={styles.callout}>
                 <Text style={styles.tutorName}>{tutor.name}</Text>
                 <Text style={styles.tutorBio}>{tutor.bio}</Text>
                 <Text style={styles.tutorSubjects}>
-                  {tutor.subjects.join(", ")}
+                  {tutor.subjects.join(', ')}
                 </Text>
               </View>
             </Callout>
@@ -119,60 +119,60 @@ export default function Main({ navigation }) {
 
 const styles = StyleSheet.create({
   map: {
-    flex: 1
+    flex: 1,
   },
   avatar: {
     width: 54,
     height: 54,
     borderRadius: 4,
     borderWidth: 4,
-    borderColor: "#FFF"
+    borderColor: '#FFF',
   },
   callout: {
-    width: 260
+    width: 260,
   },
   tutorName: {
-    fontWeight: "bold",
-    fontSize: 16
+    fontWeight: 'bold',
+    fontSize: 16,
   },
   tutorBio: {
-    color: "#666",
-    marginTop: 5
+    color: '#666',
+    marginTop: 5,
   },
   tutorSubjects: {
-    marginTop: 5
+    marginTop: 5,
   },
   searchForm: {
-    position: "absolute",
+    position: 'absolute',
     top: 20,
     left: 20,
     right: 20,
     zIndex: 5,
-    flexDirection: "row"
+    flexDirection: 'row',
   },
   searchInput: {
     flex: 1,
     height: 50,
-    backgroundColor: "#FFF",
-    color: "#333",
+    backgroundColor: '#FFF',
+    color: '#333',
     borderRadius: 25,
     paddingHorizontal: 20,
     fontSize: 16,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOpacity: 0.2,
     shadowOffset: {
       width: 4,
-      height: 4
+      height: 4,
     },
-    elevation: 2
+    elevation: 2,
   },
   loadButton: {
     height: 50,
     width: 50,
-    backgroundColor: "#8E4DFF",
+    backgroundColor: '#146D4F',
     borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
-    marginLeft: 15
-  }
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 15,
+  },
 });
